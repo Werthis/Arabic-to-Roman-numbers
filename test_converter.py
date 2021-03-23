@@ -10,28 +10,6 @@ class TestMethods(unittest.TestCase):
     def test_make_list_method(self):
         self.assertEqual(self.program.split_number_and_put_into_list(), [8, 9])
 
-    def test_first_symbol_method(self):
-        string_number = str(self.number)
-        self.assertEqual(self.program.make_first_symbol(int(string_number[1])), 'IX')
-        self.assertEqual(self.program.make_first_symbol(int(string_number[0])), 'VIII')
-
-    def test_second_symbol_method(self):
-        string_number = str(self.number)
-        self.assertEqual(self.program.make_second_symbol(int(string_number[1])), 'XC')
-        self.assertEqual(self.program.make_second_symbol(int(string_number[0])), 'LXXX')
-
-    def test_third_symbol_method(self):
-        string_number = str(self.number)
-        self.assertEqual(self.program.make_third_symbol(int(string_number[1])), 'CM')
-        self.assertEqual(self.program.make_third_symbol(int(string_number[0])), 'DCCC')
-
-    def test_forth_symbol_method(self):
-        self.number = 13
-        self.program = Converter(self.number)
-        string_number = str(self.number)
-        self.assertEqual(self.program.make_forth_symbol(int(string_number[1])), 'MMM')
-        self.assertEqual(self.program.make_forth_symbol(int(string_number[0])), 'M')
-
     def test_combine_symbols(self):
         self.program.split_number_and_put_into_list()
         self.assertEqual(self.program.combine_roman_symbols_to_make_a_number(), 'LXXXIX')
@@ -105,11 +83,16 @@ class TestNumbers(unittest.TestCase):
         thousand.split_number_and_put_into_list()
         self.assertEqual(thousand.combine_roman_symbols_to_make_a_number(), 'CI')
 
+
     # def test_error(self):
     #     error = Converter(4000)
-    #     self.assertRaises("\n\t\tI am very sorry, but roman numbers goes only till 3999", error.check_if_in_range())
+    #     with self.assertRaises(drzewa.WorngNodeClassError):
+    #         self.root.add_children(FakeNode(), FakeNode())
+
         
-        # (error.combine_roman_symbols_to_make_a_number(), ValueError("\n\t\tI am very sorry, but roman numbers goes only till 3999"))
+        
+    #     self.assertRaises("\n\t\tI am very sorry, but roman numbers goes only till 3999", error.check_if_in_range())
+    #     (error.combine_roman_symbols_to_make_a_number(), ValueError("\n\t\tI am very sorry, but roman numbers goes only till 3999"))
 
 
 

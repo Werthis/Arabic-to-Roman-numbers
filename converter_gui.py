@@ -26,14 +26,6 @@ class GuiTrans():
         blanc_label = tk.Label(self.window, text = '')
 
         roman_number_converted = tk.Label(self.window, textvariable=self.text)
-    
-    
-        # introduction_label.grid(row = 0, column = 1)
-        # arabic_label.grid(row = 2, column = 0)
-        # input_area.grid(row = 2, column = 1)
-        # conversion_button.grid(row = 3, column = 1)
-        # roman_label.grid(row = 5, column = 0)
-        # roman_number_converted.grid(row = 5, column = 1)
 
         introduction_label.pack(fill=tk.BOTH)
         arabic_label.pack(fill=tk.BOTH)
@@ -59,7 +51,6 @@ class GuiTrans():
 
     def start(self):
         self.window.mainloop()
-
 
 if __name__ == "__main__":
     number = ''                            
