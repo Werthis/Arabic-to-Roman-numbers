@@ -44,7 +44,7 @@ class GuiTrans():
     def conversion(self):
         self.text.set('')
         self.get_number_from_user()
-        roman_number = self._backend.input_send_to_gui(self.arabic_number)
+        roman_number = self._backend.gui_cumunication(self.arabic_number)
         self.arabic_number = 0
         self.text.set(roman_number)
         self.number.set('')

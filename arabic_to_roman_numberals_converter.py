@@ -12,10 +12,10 @@ class Converter():
         self.M_symbol = 'M'
 
     def split_number_and_put_into_list(self):
-        self._text = str(self._arabic_number)
-        self._lenght_of_number = len(self._text)
+        self._number_as_string = str(self._arabic_number)
+        self._lenght_of_number = len(self._number_as_string)
         for i in range(self._lenght_of_number):
-            x = int(self._text[i])
+            x = int(self._number_as_string[i])
             self._decimal_digits.append(x)
 
         return self._decimal_digits
@@ -26,41 +26,41 @@ class Converter():
 
     def combine_roman_symbols_to_make_a_number(self):
         if self._lenght_of_number == 1:
-            first_number = self._decimal_digits[0]
-            roman_number = self.make_all(first_number, self.I_symbol, self.V_symbol, self.X_symbol)
+            _number_from_1_to_9 = self._decimal_digits[0]
+            roman_number = self.make_roman_symbol_from_number(_number_from_1_to_9, self.I_symbol, self.V_symbol, self.X_symbol)
 
         elif self._lenght_of_number == 2:
-            first_number = self._decimal_digits[1]
-            second_number = self._decimal_digits[0]
+            _number_from_1_to_9 = self._decimal_digits[1]
+            _number_from_10_to_99 = self._decimal_digits[0]
             roman_number = (
-                self.make_all(second_number, self.X_symbol, self.L_symbol, self.C_symbol) 
-                + self.make_all(first_number, self.I_symbol, self.V_symbol, self.X_symbol)
+                self.make_roman_symbol_from_number(_number_from_10_to_99, self.X_symbol, self.L_symbol, self.C_symbol) 
+                + self.make_roman_symbol_from_number(_number_from_1_to_9, self.I_symbol, self.V_symbol, self.X_symbol)
             )
         elif self._lenght_of_number == 3:
-            first_number = self._decimal_digits[2]
-            second_number = self._decimal_digits[1]
-            third_number = self._decimal_digits[0]
+            _number_from_1_to_9 = self._decimal_digits[2]
+            _number_from_10_to_99 = self._decimal_digits[1]
+            _number_from_100_to_999 = self._decimal_digits[0]
             roman_number = (
-                self.make_all(third_number, self.C_symbol, self.D_symbol, self.M_symbol) 
-                + self.make_all(second_number, self.X_symbol, self.L_symbol, self.C_symbol) 
-                + self.make_all(first_number, self.I_symbol, self.V_symbol, self.X_symbol)
+                self.make_roman_symbol_from_number(_number_from_100_to_999, self.C_symbol, self.D_symbol, self.M_symbol) 
+                + self.make_roman_symbol_from_number(_number_from_10_to_99, self.X_symbol, self.L_symbol, self.C_symbol) 
+                + self.make_roman_symbol_from_number(_number_from_1_to_9, self.I_symbol, self.V_symbol, self.X_symbol)
             )
              
         elif self._lenght_of_number == 4:
-            first_number = self._decimal_digits[3]
-            second_number = self._decimal_digits[2]
-            third_number = self._decimal_digits[1]
-            forth_number = self._decimal_digits[0]
+            _number_from_1_to_9 = self._decimal_digits[3]
+            _number_from_10_to_99 = self._decimal_digits[2]
+            _number_from_100_to_999 = self._decimal_digits[1]
+            _number_from_1000_to_3999 = self._decimal_digits[0]
             roman_number = (
-                self.make_forth_symbol(forth_number) 
-                + self.make_all(third_number, self.C_symbol, self.D_symbol, self.M_symbol) 
-                + self.make_all(second_number, self.X_symbol, self.L_symbol, self.C_symbol) 
-                + self.make_all(first_number, self.I_symbol, self.V_symbol, self.X_symbol)
+                self.make_forth_symbol(_number_from_1000_to_3999) 
+                + self.make_roman_symbol_from_number(_number_from_100_to_999, self.C_symbol, self.D_symbol, self.M_symbol) 
+                + self.make_roman_symbol_from_number(_number_from_10_to_99, self.X_symbol, self.L_symbol, self.C_symbol) 
+                + self.make_roman_symbol_from_number(_number_from_1_to_9, self.I_symbol, self.V_symbol, self.X_symbol)
             )
 
         return roman_number
 
-    def make_all(self, number, first_symbol, second_symbol, third_symbol):      
+    def make_roman_symbol_from_number(self, number, first_symbol, second_symbol, third_symbol):      
         if number < 4:
             return first_symbol * number
         elif number == 4:
@@ -76,7 +76,7 @@ class Converter():
         else:
             raise ValueError("\n\t\tI am very sorry, but roman numbers goes only till 3999")
 
-    def input_send_to_gui(self, gui_input):
+    def gui_cumunication(self, gui_input):
         self._arabic_number = gui_input
         self.split_number_and_put_into_list()
         self.check_if_in_range()
