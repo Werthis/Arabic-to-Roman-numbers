@@ -1,0 +1,30 @@
+<Label>:
+    font_size: 30
+    color: 0.3, 0.4, 0.5, 1
+
+<Button>:
+    font_size: 30
+    color: 0.3, 0.4, 0.5, 1
+
+<RomanGrid>:
+
+    arabic_number: arabic_number
+    # roman_number: roman_number
+
+    GridLayout:
+        cols: 1
+        size: root.width, root.height
+
+        GridLayout:
+            cols: 2
+
+            Label:
+                text: 'enter Arabic number:'
+            
+            TextInput:
+                multiline: False
+                id: arabic_number
+
+        Button:
+            text: 'Convert'
+            on_press: root.get_number_from_user()
