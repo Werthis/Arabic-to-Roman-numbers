@@ -14,38 +14,36 @@ class RomanGrid(Widget):
     arabic_number = ObjectProperty(None)
     roman_number = StringProperty()
 
-    def __init__(self, **kwargs):
-        super(RomanGrid, self).__init__(**kwargs)
+    def __init__(self, backend, *args, **kwargs):
+        super(RomanGrid, self).__init__(*args, **kwargs)
+        self._backend = backend
         self.roman_number = 'Here comes your number!'
-
-    def change_text(self):
-        new_number = self.arabic_number.text
-        self.roman_number = str(new_number)
-        self.arabic_number.text = ''
 
     def get_number_from_user(self):
         self.number_to_convert = self.arabic_number.text
-        self.number_to_convert = str(self.number_to_convert)
-        self.roman_number.set(self.number_to_convert)
-        print('Arabic number is:', self.number_to_convert)
-        self.arabic_number.text = ''
         return self.number_to_convert
-
+    
     def request(self):
         self.get_number_from_user()
-        roman_number = self._backend
+        number_to_convert = self._backend.gui_cumunication(self.number_to_convert)
+        self.roman_number = str(number_to_convert)
 
 class RomanApp(App):
+
+    def __init__(self, backend):
+        super(RomanApp, self).__init__()
+        self._backend = backend
+
     def build(self):
-        return RomanGrid()
+        return RomanGrid(self._backend)
 
     def start_app(self):
-        RomanApp().run()                
+        RomanApp(self._backend).run()                
 
 
 if __name__ == '__main__':
     number = ''
     program = trans.Converter(number)
     ## Tu pisz dalej
-    app = RomanApp()
+    app = RomanApp(program)
     app.start_app()
