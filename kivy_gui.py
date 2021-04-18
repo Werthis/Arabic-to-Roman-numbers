@@ -27,6 +27,7 @@ class RomanGrid(Widget):
         self.get_number_from_user()
         number_to_convert = self._backend.gui_cumunication(self.number_to_convert)
         self.roman_number = str(number_to_convert)
+        self.arabic_number.text = ''
 
 class RomanApp(App):
 
@@ -44,6 +45,5 @@ class RomanApp(App):
 if __name__ == '__main__':
     number = ''
     program = trans.Converter(number)
-    ## Tu pisz dalej
     app = RomanApp(program)
     app.start_app()
