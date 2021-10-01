@@ -84,18 +84,5 @@ class TestNumbers(unittest.TestCase):
         self.assertEqual(thousand.combine_roman_symbols_to_make_a_number(), 'CI')
 
 
-    # def test_error(self):
-    #     error = Converter(4000)
-    #     with self.assertRaises(drzewa.WorngNodeClassError):
-    #         self.root.add_children(FakeNode(), FakeNode())
-
-        
-        
-    #     self.assertRaises("\n\t\tI am very sorry, but roman numbers goes only till 3999", error.check_if_in_range())
-    #     (error.combine_roman_symbols_to_make_a_number(), ValueError("\n\t\tI am very sorry, but roman numbers goes only till 3999"))
-
-
-
-
 if __name__ == "__main__":
     unittest.main()
