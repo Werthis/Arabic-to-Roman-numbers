@@ -1,5 +1,8 @@
 # Arabic to Roman numbers
 
-## A program that converts Arabic numbers into Roman numerals
+## The program was created to learn how to use loops and lists, it was my first program with GUI written in Kivy with "Request and Response" method where backend and frontend are in separate files. Kv file is an introduction to CSS. 
 
-### There are: main file, unittest file and 2 gui files: Kivy (+kv file) and Tkinter
+## A program converts Arabic numbers into Roman numerals
+
+
+![1](1.png) ![3](3.png)
